@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import timedelta, datetime
 
 # Set page config
-st.set_page_config(page_title="YouTube Channel Dashboard", layout="wide")
+st.set_page_config(page_title="YouTube Metrics Dashboard", layout="wide")
 
 # Helper functions
 @st.cache_data
@@ -108,12 +108,12 @@ def display_metric(col, title, value, df, column, color, time_frame):
 df = load_data()
 
 # Set up input widgets
-st.logo(image="images/streamlit-logo-primary-colormark-lighttext.png", 
-        icon_image="images/streamlit-mark-color.png")
+st.logo(image="images/primary_logo.png", 
+        icon_image="main_logo.png")
 
 with st.sidebar:
-    st.title("YouTube Channel Dashboard")
-    st.header("⚙️ Settings")
+    st.title("YouTube Metrics Dashboard")
+    st.header("⚙️ Dashboard Tweaks")
     
     max_date = df['DATE'].max().date()
     default_start_date = max_date - timedelta(days=365)  # Show a year by default
@@ -137,7 +137,7 @@ elif time_frame == 'Quarterly':
     df_display = get_quarterly_data(df)
 
 # Display Key Metrics
-st.subheader("All-Time Statistics")
+st.subheader("Overall Statistics")
 
 metrics = [
     ("Total Subscribers", "NET_SUBSCRIBERS", '#29b5e8'),
@@ -151,7 +151,7 @@ for col, (title, column, color) in zip(cols, metrics):
     total_value = df[column].sum()
     display_metric(col, title, total_value, df_display, column, color, time_frame)
 
-st.subheader("Selected Duration")
+st.subheader("Selected Timeframe")
 
 if time_frame == 'Quarterly':
     start_quarter = custom_quarter(start_date)
