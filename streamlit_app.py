@@ -108,8 +108,8 @@ def display_metric(col, title, value, df, column, color, time_frame):
 df = load_data()
 
 # Set up input widgets
-st.logo(image="images/primary_logo.png", 
-        icon_image="main_logo.png")
+st.logo(image="resources/primary_logo.png", 
+        icon_image="resources/main_logo.png")
 
 with st.sidebar:
     st.title("YouTube Metrics Dashboard")
